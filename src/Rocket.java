@@ -27,18 +27,17 @@ public class Rocket implements SpaceShip {
 
     public double carry(Item item) {
        double sum = Item.weight + rocketWeight;
+       sum = rocketWeight;
     return sum;
     }
 
-    public int weightOfCargo() {
+    public int weightOfCargo(Item item) {
         int sumCargo = acctualCargo + Item.weight;
         sumCargo = acctualCargo;
         return sumCargo;
     }
 
-    public boolean isMaxWeight () {
-        if (acctualCargo + rocketWeight <= maxWeight) {return true; }
-        else {return false;}
+
     }
 
-}
+

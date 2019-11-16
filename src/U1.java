@@ -45,10 +45,7 @@ public class U1 extends Rocket {
 
     }
 
-    @Override
-    public boolean isMaxWeight() {
-        return super.isMaxWeight();
-    }
+
 }
 
 
