@@ -10,6 +10,7 @@ public class U1 extends Rocket {
     //override launch
 
 
+
     public boolean launch() {
         if (launchExplosion >= 1) {
             return false;
@@ -41,6 +42,13 @@ public class U1 extends Rocket {
     @Override
     public int weightOfCargo() {
         return super.weightOfCargo();
+
+    }
+
+    @Override
+    public boolean isMaxWeight() {
+        return super.isMaxWeight();
     }
 }
+
 

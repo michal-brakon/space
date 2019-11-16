@@ -22,4 +22,28 @@ public class Simulation {
 
     }
 
+
+
+    public ArrayList loadU1() throws Exception {
+
+            // kreowanie U1
+        U1 firstRocket = new U1();
+
+            int size = loadItems().size();
+            for (int w = 0; w > size; w++) {
+                firstRocket.canCarry((Item) loadItems().get(w));
+                    firstRocket.carry((Item) loadItems().get(w));
+                    firstRocket.isMaxWeight();
+                }
+            }
+
+
+
+           }
+
+
+
+
+    }
+
 }

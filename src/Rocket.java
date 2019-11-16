@@ -2,9 +2,9 @@ public class Rocket implements SpaceShip {
 
     int cost;
     int rocketWeight;
-    int maxWeight; //maxmalna waga statku z łądunkiem
+   public int maxWeight; //maxmalna waga statku z łądunkiem
     int maxCargo;
-    int acctualCargo;
+    int acctualCargo; //
     double launchExplosion;
     double landCrash;
 
@@ -32,7 +32,13 @@ public class Rocket implements SpaceShip {
 
     public int weightOfCargo() {
         int sumCargo = acctualCargo + Item.weight;
+        sumCargo = acctualCargo;
         return sumCargo;
+    }
+
+    public boolean isMaxWeight () {
+        if (acctualCargo + rocketWeight <= maxWeight) {return true; }
+        else {return false;}
     }
 
 }
