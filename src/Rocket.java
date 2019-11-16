@@ -1,11 +1,12 @@
 public class Rocket implements SpaceShip {
 
-    String name;
     int cost;
     int rocketWeight;
     int maxWeight; //maxmalna waga statku z łądunkiem
-    int launchExplosion;
-    int landCrash;
+    int maxCargo;
+    int acctualCargo;
+    double launchExplosion;
+    double landCrash;
 
 
     public boolean launch() {
@@ -28,4 +29,10 @@ public class Rocket implements SpaceShip {
        double sum = Item.weight + rocketWeight;
     return sum;
     }
+
+    public int weightOfCargo() {
+        int sumCargo = acctualCargo + Item.weight;
+        return sumCargo;
+    }
+
 }
