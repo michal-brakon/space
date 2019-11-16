@@ -7,8 +7,15 @@ public class U2 extends Rocket {
     double launchExplosion = 0.04 * (weightOfCargo() / maxCargo);
     double landCrash = 0.08 * (weightOfCargo() / maxCargo);
 
+
+    private double weightOfCargo() {
+        int sumCargo = acctualCargo + Item.weight;
+        sumCargo = acctualCargo;
+        return sumCargo;
+    }
+
     public boolean launch() {
-        if (launchExplosion >= 0.04) {
+        if (launchExplosion > 0.04) {
             return false;
         }
         else {
@@ -17,7 +24,7 @@ public class U2 extends Rocket {
     }
 
     public boolean land() {
-        if(landCrash >= 0.08) {
+        if(landCrash > 0.08) {
             return false;
         }
         else {
@@ -25,19 +32,5 @@ public class U2 extends Rocket {
 
     }
 
-    @Override
-    public boolean canCarry(Item item) {
-        return super.canCarry(item);
     }
-
-    @Override
-    public double carry(Item item) {
-        return super.carry(item);
-    }
-
-    @Override
-    public int weightOfCargo(Item item) {
-        return super.weightOfCargo(item);
-    }
-}
 
