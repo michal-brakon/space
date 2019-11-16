@@ -48,15 +48,15 @@ public class Simulation {
     public ArrayList<U2> loadU2() throws Exception {
         boolean needNextU2 = true;
         while(needNextU2) {
-            U2 u2Rocket = new U2();
+            U2 u2 = new U2();
             int size = loadItems().size();
             for (int w = 0; w < size;) {
-                if(u2Rocket.canCarry((Item) loadItems().get(w))) {
-                    u2Rocket.carry((Item) loadItems().get(w));
-                    u2Rocket.weightOfCargo((Item) loadItems().get(w));
+                if(u2.canCarry((Item) loadItems().get(w))) {
+                    u2.carry((Item) loadItems().get(w));
+                    u2.weightOfCargo((Item) loadItems().get(w));
                     loadItems().remove(w);}
                 else {
-                    loadU2().add(u2Rocket);}
+                    loadU2().add(u2);}
 
                 if (size == 0) {
                     needNextU2 = false;}
@@ -64,6 +64,24 @@ public class Simulation {
 
         }
         return loadU2();
+    }
+    int runSimulation() throws Exception{
+        int totalBudget = 0;
+
+        for (U2 u2 : loadU2()) {
+           if (u2.launch()) {
+               totalBudget = totalBudget + u2.cost;
+           }
+        }
+
+        for (U2 u2 : loadU2()) {
+           if (!(u2.land())) {
+               loadU2().add(u2);
+           }
+        }
+
+
+        return totalBudget;
     }
 
 

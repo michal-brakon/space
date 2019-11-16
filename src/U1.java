@@ -12,7 +12,7 @@ public class U1 extends Rocket {
 
 
     public boolean launch() {
-        if (launchExplosion >= 1) {
+        if (launchExplosion <= 0.05) {
             return false;
         }
         else {
@@ -21,7 +21,7 @@ public class U1 extends Rocket {
     }
 
     public boolean land() {
-        if(landCrash >= 1) {
+        if(landCrash <= 0.01) {
             return false;
         }
         else {
@@ -40,10 +40,10 @@ public class U1 extends Rocket {
     }
 
     @Override
-    public int weightOfCargo() {
-        return super.weightOfCargo();
-
+    public int weightOfCargo(Item item) {
+        return super.weightOfCargo(item);
     }
+}
 
 
 }
