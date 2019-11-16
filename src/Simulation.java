@@ -45,6 +45,26 @@ public class Simulation {
                 return loadU1();
             }
 
+    public ArrayList<U2> loadU2() throws Exception {
+        boolean needNextU2 = true;
+        while(needNextU2) {
+            U2 u2Rocket = new U2();
+            int size = loadItems().size();
+            for (int w = 0; w < size;) {
+                if(u2Rocket.canCarry((Item) loadItems().get(w))) {
+                    u2Rocket.carry((Item) loadItems().get(w));
+                    u2Rocket.weightOfCargo((Item) loadItems().get(w));
+                    loadItems().remove(w);}
+                else {
+                    loadU2().add(u2Rocket);}
+
+                if (size == 0) {
+                    needNextU2 = false;}
+            }
+
+        }
+        return loadU2();
+    }
 
 
            }
