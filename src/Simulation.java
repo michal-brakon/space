@@ -27,15 +27,15 @@ public class Simulation {
     public ArrayList<U1> loadU1() throws Exception {
             boolean needNextU1 = true;
             while(needNextU1) {
-        U1 u1Rocket = new U1();
+        U1 u1 = new U1();
             int size = loadItems().size();
             for (int w = 0; w < size;) {
-                if(u1Rocket.canCarry((Item) loadItems().get(w))) {
-                    u1Rocket.carry((Item) loadItems().get(w));
-                    u1Rocket.weightOfCargo((Item) loadItems().get(w));
+                if(u1.canCarry((Item) loadItems().get(w))) {
+                    u1.carry((Item) loadItems().get(w));
+                    u1.weightOfCargo((Item) loadItems().get(w));
                     loadItems().remove(w);}
                     else {
-                     loadU1().add(u1Rocket);}
+                     loadU1().add(u1);}
 
                     if (size == 0) {
                         needNextU1 = false;}
@@ -65,12 +65,30 @@ public class Simulation {
         }
         return loadU2();
     }
-    int runSimulation() throws Exception{
-        int totalBudget = 0;
+    int runSimulationU1() throws Exception{
+        int totalBudgetU1 = 0;
+
+        for (U1 u1 : loadU1()) {
+            if (u1.launch()) {
+                totalBudgetU1 = totalBudgetU1 + u1.cost;
+            }
+        }
+        for (U1 u1 : loadU1()) {
+            if (!(u1.land())) {
+                loadU1().add(u1);
+            }
+        }
+
+
+        return totalBudgetU1;
+    }
+
+    int runSimulationU2() throws Exception{
+        int totalBudgetU2 = 0;
 
         for (U2 u2 : loadU2()) {
            if (u2.launch()) {
-               totalBudget = totalBudget + u2.cost;
+               totalBudgetU2 = totalBudgetU2 + u2.cost;
            }
         }
 
@@ -79,9 +97,7 @@ public class Simulation {
                loadU2().add(u2);
            }
         }
-
-
-        return totalBudget;
+       return totalBudgetU2;
     }
 
 
