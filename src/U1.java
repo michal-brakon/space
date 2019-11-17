@@ -3,17 +3,12 @@ public class U1 extends Rocket {
     int rocketWeight = 10000;
     int maxWeight = 18000; //maxmalna waga statku z
     int maxCargo = 8000;
-    int acctualCargo = 0;
-    double launchExplosion = 0.05 * (weightOfCargo() / maxCargo);
-    double landCrash = 0.01 * (weightOfCargo() / maxCargo);
+    int cargoWeight = 0;
+    int cargoAndRocket = 0;
+    double launchExplosion = 0.05 * (cargoWeight/ maxCargo);
+    double landCrash = 0.01 * (cargoWeight / maxCargo);
 
-    private double weightOfCargo() {
-        int sumCargo = acctualCargo + Item.weight;
-        sumCargo = acctualCargo;
-        return sumCargo;
-    }
-
-    public boolean launch() {
+        public boolean launch() {
         if (launchExplosion > 0.05) {
             return false;
         }

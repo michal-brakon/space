@@ -1,25 +1,30 @@
+import java.util.InputMismatchException;
+
+
 public class Main {
 
-    static void main(String[] args){
-        System.out.println("aaaa");
+    public static void main(String[] args) throws Exception {
+        Simulation firstTry = new Simulation();
+
+        firstTry.loadU1();
 
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

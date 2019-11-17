@@ -1,18 +1,12 @@
 public class U2 extends Rocket {
-    int cost = 120; // in milions
+    int cost = 120;
     int rocketWeight = 18000;
     int maxWeight = 29000; //maxmalna waga statku z
     int maxCargo = 11000;
-    int acctualCargo = 0;
-    double launchExplosion = 0.04 * (weightOfCargo() / maxCargo);
-    double landCrash = 0.08 * (weightOfCargo() / maxCargo);
-
-
-    private double weightOfCargo() {
-        int sumCargo = acctualCargo + Item.weight;
-        sumCargo = acctualCargo;
-        return sumCargo;
-    }
+    int cargoWeight = 0;
+    int cargoAndRocket = 0;
+    double launchExplosion = 0.04 * (cargoWeight/ maxCargo);
+    double landCrash = 0.08 * (cargoWeight / maxCargo);
 
     public boolean launch() {
         if (launchExplosion > 0.04) {
@@ -31,6 +25,6 @@ public class U2 extends Rocket {
             return true;}
 
     }
+}
 
-    }
 
