@@ -10,57 +10,67 @@ import java.util.InputMismatchException;
 public class Simulation {
     public static ArrayList loadItems() throws FileNotFoundException {
 File f = new File("phase-2.txt");
-        ArrayList<Item> itemsList = new ArrayList<Item>();
-        int i = 1;
+        ArrayList<Item> items = new ArrayList<Item>();
+        int i = 0;
         Scanner s = new Scanner(f);
         while (s.hasNextLine()) {
             String line = s.nextLine();
-            String[] items = line.split("=");
+            String[] itemsS = line.split("=");
 
             //String[] item = line.split("=");
 
-            String name = items[0];
-            int weight = Integer.valueOf(items[1]);
+            String name = itemsS[0];
+            int weight = Integer.valueOf(itemsS[1]);
             Item item = new Item(name, weight);
-            itemsList.add(item);
-            //System.out.println("The item " + i + " is '" + items[0] + ": weights " + items[1] + " kg");
+            items.add(item);
+
             i++;
         }
+        System.out.println("The item " + 1 + " is '" + items.get(1) + ": weights " + items.get(1) + " kg");
 
-        return itemsList;
+        return items;
     }
 
 
 
 
 
-    public ArrayList<U1> loadU1() throws Exception {
-            boolean needNextU1 = true;
-            while(needNextU1) {
+    public ArrayList<U1> loadU1(ArrayList <Item> itemsS) throws Exception {
+
+
         U1 u1 = new U1();
-            int size = loadItems().size();
-            for (int w = 0; w <= size; w++) {
-                if (u1.canCarry((Item) loadItems().get(w))) {
-                    System.out.println("canCaryr");
-                    u1.carry((Item) loadItems().get(w));
-                    System.out.println("carry");
-                    System.out.println("weightofcarg");
-                    System.out.println(w);
+            int size = itemsS.size();
+            System.out.println(itemsS);
+            //System.out.println(size);
+       // System.out.println(u1.cargoWeight);
+            while (u1.cargoWeight < u1.maxCargo) {
+            for (int w = 0; w < size; w++) {
+
+
+                //// to co ponizej nie działa
+                if (u1.canCarry(itemsS.get(w))); {
+                  //  System.out.println("canCaryr");
+                    u1.carry(itemsS.get(w));
+                  //  System.out.println("carry");
+                  //  System.out.println("weightofcarg");
+                  //  System.out.println(w);
+                  //  System.out.println(u1.cargoWeight);
+                  //  System.out.println();
                 }
+
+
             }
-                    if (){
+                    /*if (){
                      loadU1().add(u1);
                     System.out.println("newrocket");}
 
                     if (size == w) {
                         needNextU1 = false;}
-                    break;
-                    }
+                    break; */}
 
-            }
-                return loadU1();
-
-            }
+                return loadU1(itemsS);
+}
+/*
 
     public ArrayList<U2> loadU2() throws Exception {
         boolean needNextU2 = true;
@@ -115,7 +125,7 @@ File f = new File("phase-2.txt");
         }
        return totalBudgetU2;
     }
-
+*/
 
            }
 

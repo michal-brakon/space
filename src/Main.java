@@ -6,8 +6,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Simulation firstTry = new Simulation();
 
-        firstTry.loadU1();
-
+        firstTry.loadItems();
 
     }
 
